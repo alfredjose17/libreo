@@ -1,0 +1,84 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom" color="dark" translucent="true">
+    <ion-tab-button tab="home">
+      <ion-icon name="compass"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+    <ng-container
+      *ngIf="isLoggedIn$ | async; then loggedIn; else loggedOut">
+    </ng-container>
+    <!-- <ng-container
+      *ngIf="isAdmin == 'Counseler'; then c; else u">
+    </ng-container> -->
+
+        <ng-template #loggedIn>
+          <!-- <ng-template #c> -->
+            <!-- <ion-tab-button *ngIf="isAdmin == 'Librarian'" tab="book-create" >
+              <ion-icon name="add-circle-outline"></ion-icon>
+              <ion-label>Add Books</ion-label>
+            </ion-tab-button> -->
+
+            <ion-tab-button *ngIf="isAdmin == 'Librarian'" tab="requests" >
+              <ion-icon name="bookmarks"></ion-icon>
+              <ion-label>Requests</ion-label>
+            </ion-tab-button>
+            <ion-tab-button *ngIf="isAdmin == 'Librarian'" tab="users" >
+              <ion-icon name="people"></ion-icon>
+              <ion-label>Mem</ion-label>
+            </ion-tab-button>
+
+            <ion-tab-button *ngIf="isAdmin == 'Client'" tab="user-req" >
+              <ion-icon name="alert"></ion-icon>
+              <ion-label>Req-Status</ion-label>
+            </ion-tab-button>
+            <ion-tab-button *ngIf="isAdmin == 'Client'" tab="borrowedbooks" >
+              <ion-icon name="albums"></ion-icon>
+              <ion-label>B-Books</ion-label>
+            </ion-tab-button>
+            <!-- <ion-tab-button tab="profile" >
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <ion-label>Profile</ion-label>
+            </ion-tab-button>
+
+
+            <ion-tab-button (click)="logOut()">
+                <ion-icon name="power"></ion-icon>
+                <ion-label>logout</ion-label>
+            </ion-tab-button> -->
+          <!-- </ng-template>
+          <ng-template #u> -->
+            <!-- <ion-tab-button *ngIf="isAdmin == 'Client'" tab="counselers" >
+              <ion-icon name="people"></ion-icon>
+              <ion-label>Counselers</ion-label>
+            </ion-tab-button>
+
+            <ion-tab-button *ngIf="isAdmin == 'Client'" tab="chathome" >
+              <ion-icon name="people"></ion-icon>
+              <ion-label>ChatHome</ion-label>
+            </ion-tab-button> -->
+
+
+
+
+
+
+          <!-- </ng-template> -->
+
+      </ng-template>
+      <ng-template #loggedOut>
+        <ion-tab-button tab="login">
+          <ion-icon name="log-in"></ion-icon>
+          <ion-label>login</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="signup">
+          <ion-icon name="add-circle"></ion-icon>
+          <ion-label>Join</ion-label>
+        </ion-tab-button>
+      </ng-template>
+      <ion-tab-button tab="settings">
+          <ion-icon name="settings"></ion-icon>
+          <ion-label>Settings</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>

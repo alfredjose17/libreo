@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>New-User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="bubbles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="newuser">
+
+
+
+        <div *ngFor="let user of filteredusers">
+          <div *ngIf="user.cs == '0'">
+              <ion-item>
+                <h2>User: "{{ user.displayName }}" with id: "{{ user.libraryid }}" wishes to Join the library</h2>
+                <div align="center" *ngIf="user.cs == '0'">
+                  <ion-button color="success" (click)="auth.updatecs('1', user.uid)">Accept</ion-button>
+                </div>
+                <div align="center" *ngIf="user.cs == '0'">
+                  <ion-button color="danger" (click)="auth.updatecs('-1', user.uid)">Reject</ion-button>
+                  
+                </div>
+                <div align="center" *ngIf="user.cs == '1'" style="background-color:palegreen;color:white;padding:20px;">
+                  <h3 style="color:green"><b>accepted</b></h3>
+                </div>
+                <div align="center" *ngIf="user.cs == '-1'" style="background-color:palegreen;color:white;padding:20px;">
+                  <h3 style="color:red"><b>Rejected</b></h3>
+                </div>
+
+              </ion-item>
+            </div>
+            <div *ngIf="user.cs == '-1'">
+                <ion-item>
+                  <h2>User: "{{ user.displayName }}" with id: "{{ user.libraryid }}" has been Rejected</h2>
+                  <div align="center" *ngIf="user.cs == '-1'">
+                    <ion-button color="success" (click)="auth.updatecs('1', user.uid)">Activate Account</ion-button>
+                  </div>
+                  <div align="center" *ngIf="user.cs == '-1'">
+                    <ion-button color="danger" (click)="auth.delete(user.uid)">Delete Account</ion-button>
+                  </div>
+
+
+                </ion-item>
+              </div>
+          </div>
+
+        </div>
+
+</ion-content>

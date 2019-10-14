@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Borrow Requests</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="counseler">
+
+
+    <div *ngFor="let key of userReqs$ | async">
+      <div *ngFor="let book of userBooks$ | async">
+        <div *ngFor="let user of filteredusers">
+          <div *ngIf="key.uid == user.uid">
+            <div *ngIf="key.bid == book.id">
+              <ion-item>
+                <h2>User: "{{ user.displayName }}" with id: "{{ user.libraryid }}" wishes to borrow book: "{{ book.bookname }}" isbn: "{{ book.bookid }}" ... </h2>
+                <div align="center" *ngIf="key.status == '0'">
+                  <ion-button color="success" (click)="borrow.bor('1', '1', user.uid, user.libraryid, key.bid, key.id)">Accept</ion-button><br><ion-button color="danger" (click)="borrow.updatestatus('-1', key.id)">Reject</ion-button>
+                </div>
+                <div align="center" *ngIf="key.status == '1'" style="background-color:palegreen;color:white;padding:20px;">
+                  <h3 style="color:green"><b>accepted</b></h3>
+                  <ion-button color="danger" (click)="borrow.delete(key.id)">Delete</ion-button>
+                </div>
+                <div align="center" *ngIf="key.status == '-1'" style="background-color:mistyrose;color:white;padding:20px;">
+                  <h3 style="color:red"><b>Rejected</b></h3>
+                  <ion-button color="danger" (click)="borrow.delete(key.id)">Delete</ion-button>
+                </div>
+              </ion-item>
+            </div>
+          </div>
+      <!-- <ion-item *ngIf="key.id == uid">  <ion-item-divider>  <div>  <h2 style="color:blue">Name :</h2><p style="color:green">{{key.bookname}}<p></div></ion-item-divider></ion-item>
+      <ion-item *ngIf="key.id == uid">  <ion-item-divider>  <div>  <h2 style="color:blue">ISBN :</h2><p style="color:green">{{key.bookid}}<p></div></ion-item-divider></ion-item>
+      <ion-item *ngIf="key.id == uid">  <ion-item-divider>  <div *ngIf="key?.bookdescription">    <h2 style="color:blue">description :</h2><p style="color:green">{{key.bookdescription}}<p></div></ion-item-divider></ion-item>
+      <ion-item *ngIf="key.id == uid">  <ion-item-divider>  <div>  <h2 style="color:blue">Authors :</h2><p style="color:green">{{key.authors}}<p></div></ion-item-divider></ion-item>
+      <ion-item *ngIf="key.id == uid">  <ion-item-divider>  <div>  <h2 style="color:blue">Publisher :</h2><p style="color:green">{{key.publisher}}<p></div></ion-item-divider></ion-item>
+      <ion-item *ngIf="key.id == uid">  <ion-item-divider>  <div>  <h2 style="color:blue">Language :</h2><p style="color:green">{{key.language}}<p></div></ion-item-divider></ion-item>
+      <div align="center" *ngIf="key.id == uid">
+        <ion-button color="success" (click)="borrow.create(key.id,key.uid)">Borrow</ion-button><ion-button color="danger">Reserve</ion-button>
+      </div> -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/users"></ion-back-button>
+    </ion-buttons>
+    <ion-title>User Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="background" align="center">
+  <div class="box">
+<div class="details">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="counseler">
+
+
+    <div *ngFor="let key of filteredusers">
+      <div *ngIf="key.uid == uid">    <div>  <h2 style="color:blue">Name :</h2><p style="color:green"><b>{{key.displayName}}</b><p></div></div>
+      <div *ngIf="key.uid == uid">    <div>  <h2 style="color:blue">Email :</h2><p style="color:green"><b>{{key.email}}<p></b></div></div>
+      <div *ngIf="key.uid == uid">    <div>  <h2 style="color:blue">library-Id :</h2><p style="color:green"><b>{{key.libraryid}}</b><p></div></div>
+      <div *ngIf="key.uid == uid">    <div>  <h2 style="color:blue">library-name :</h2><p style="color:green"><b>{{key.libraryname}}</b><p></div></div>
+
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+  </div>
+
+</ion-content>

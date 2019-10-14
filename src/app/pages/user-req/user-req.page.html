@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>user-req</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="counseler">
+
+
+    <div *ngFor="let key of userReqs$ | async">
+      <div *ngFor="let book of userBooks$ | async">
+
+            <div *ngIf="key.bid == book.id">
+              <ion-item>
+
+                <div *ngIf="key.status == '0'">
+                  <h2>{{ book.bookname }}</h2> <h2  style="color:gold">Status :Pending</h2><ion-button (click)="borrow.delete(key.id)">Delete</ion-button>
+                </div>
+                <div *ngIf="key.status == '1'">
+                  <h2>{{ book.bookname }}</h2><h2 style="color:green"> Status :Accepted</h2>
+                </div>
+                <div *ngIf="key.status == '-1'">
+                  <h2>{{ book.bookname }}</h2><h2 style="color:red"> Status :Rejected</h2>
+                </div>
+              </ion-item>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+</ion-content>

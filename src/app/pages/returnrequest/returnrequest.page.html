@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-title>Return Request</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div class="counseler">
+
+
+    <div *ngFor="let key of userReqs$ | async">
+      <div *ngFor="let book of userBooks$ | async">
+        <div *ngFor="let user of filteredusers">
+          <div *ngIf="key.uid == user.uid">
+            <div *ngIf="key.bid == book.id">
+              <ion-item>
+                <h2>User: "{{ user.displayName }}" with id: "{{ user.libraryid }}" wishes to Retur  book: "{{ book.bookname }}" isbn: "{{ book.bookid }}" ... </h2>
+                <div align="center" *ngIf="key.status == '0'">
+                  <ion-button color="success" (click)="ret.bor('0', '1', 'null', 'null', key.bid, key.id, book.norate+1,book.totrate+key.rate)">Accept</ion-button><br><ion-button color="danger" (click)="borrow.updatestatus('-1', key.id)">Reject</ion-button>
+                </div>
+                <div align="center" *ngIf="key.status == '1'" style="background-color:palegreen;color:white;padding:20px;">
+                  <h3 style="color:green"><b>accepted</b></h3>
+                  <ion-button color="danger" (click)="ret.delete(key.id)">Delete</ion-button>
+                </div>
+
+              </ion-item>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ion-content>

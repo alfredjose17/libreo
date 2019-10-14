@@ -1,0 +1,31 @@
+
+<div class="background" align="center">
+<div class="box">
+
+
+
+      <h1>
+        Login
+      </h1>
+        <div class="spacer" style="height: 10px;"></div>
+
+          <ion-input type="email" placeholder="Email" [(ngModel)]="credentials.email"></ion-input>
+
+        <div class="spacer" style="height: 5px;"></div>
+
+          <ion-input type="password" placeholder="Password" [(ngModel)]="credentials.password"></ion-input>
+
+
+        <div class="spacer" style="height: 10px;"></div>
+        <ion-button block round outline color="success"(click)="signin()">Login</ion-button>
+        <ion-button block round outline color="danger"(click)="signup()">Signup</ion-button>
+
+
+  <ion-grid>
+    <ion-row>
+
+    </ion-row>
+  </ion-grid>
+</div>
+
+</div>

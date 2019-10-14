@@ -1,0 +1,24 @@
+.books{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  display: flex;
+  background: url("home.jpg") no-repeat 50% 50%;
+  top: 0;
+  display: table;
+  background-size: cover;
+  background-color: #000000;
+  background-position: center;
+  background-attachment: fixed;
+}
+hr {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+border-color:green;
+}

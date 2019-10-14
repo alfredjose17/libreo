@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/books"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Book Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content>
+  <div class="details">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <div class="counseler">
+
+
+      <div *ngFor="let key of userBooks$ | async">
+        <div *ngIf="key.id == uid" align="center" class="img">
+          <img src="{{ key.imglink }}" alt="Loading..."/>
+        </div>
+        <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Name :</h2><p style="color:green">{{key.bookname}}<p></div></div>
+          <div *ngIf="key.id == uid"><h2 style="color:blue">UserRating( {{norate}} ) :</h2><div>
+            <ion-button color="dark" (click)="rating()"><div *ngIf="k == '0'">Rating</div><div *ngIf="k != '0'"><ion-icon name="star" *ngFor="let num of array"
+               [ngStyle]="{'color':getColor(num)}">
+            </ion-icon>
+            <ion-icon name="star" *ngFor="let num of left"
+               [ngStyle]="{'color':getCol(num)}">
+            </ion-icon></div></ion-button>
+
+          </div></div>
+        <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">ISBN :</h2><p style="color:green">{{key.bookid}}<p></div></div>
+        <div *ngIf="key.id == uid">    <div *ngIf="key?.bookdescription">    <h2 style="color:blue">description :</h2><p style="color:green">{{key.bookdescription}}<p></div></div>
+        <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Authors :</h2><p style="color:green">{{key.authors}}<p></div></div>
+        <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Publisher :</h2><p style="color:green">{{key.publisher}}<p></div></div>
+        <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Language :</h2><p style="color:green">{{key.language}}<p></div></div>
+
+        <div align="center" *ngIf="key.id == uid">
+          <div *ngIf="key.borrow == '0';else other_content">
+            <ion-button color="success" (click)="borrow.create(key.id,key.uid,'0')">Borrow</ion-button><ion-button color="danger">Reserve</ion-button>
+          </div>
+          <ng-template #other_content>
+            <h2 style="color:red">Book Has been borrowed</h2>
+            <div *ngIf="isAdmin == 'Librarian'">
+              <h2 style="color:blue">Book borrowed by <ion-button routerLink="/tabs/users/{{ key.borroweruid }}" routerDirection="forward">{{key.borrowerlid}}</ion-button></h2>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </ion-content>

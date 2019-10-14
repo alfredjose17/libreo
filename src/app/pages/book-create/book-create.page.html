@@ -1,0 +1,179 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>New Book</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<div class="book" align="center">
+  <div>
+    <ion-button block round outline color="dark" (click)="scan()">
+      <ion-icon name="camera"></ion-icon>
+      SCAN
+    </ion-button>
+  </div>
+  <div class="spacer" style="height: 10px;"></div>
+  <ion-button block round outline color="primary"(click)="l=1">Enter Manually</ion-button>
+  <ion-button block round outline color="primary"(click)="l=0">Enter Using ISBN</ion-button>
+  <div>
+    <ion-button *ngIf = "m > '0'" block round outline color="danger"(click)="m=m-1">Previous</ion-button>
+    <ion-button block round outline color="success"(click)="m=m+1">Next</ion-button>
+  </div>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged($event)" value="{{ scannedData.text }}" placeholder="search using isbn"></ion-searchbar>
+  <div *ngIf=" l == '1'">
+   <ion-item>
+      <ion-label position="stacked"><h1 style="color:red"><b>Book Name</b></h1></ion-label>
+      <ion-input [(ngModel)]="bookname" type="text">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><h1 style="color:red"><b>Book Id</b></h1></ion-label>
+      <ion-input [(ngModel)]="bookid" type="text">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><h1 style="color:red"><b>Book Authors</b></h1></ion-label>
+      <ion-input [(ngModel)]="authors" type="text">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><h1 style="color:red"><b>Book Publisher</b></h1></ion-label>
+      <ion-input [(ngModel)]="publisher" type="text">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><h1 style="color:red"><b>Img link</b></h1></ion-label>
+      <ion-input [(ngModel)]="imglink" type="text">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><h1 style="color:red"><b>language</b></h1></ion-label>
+      <ion-input [(ngModel)]="language" type="text">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><h1 style="color:red"><b>Book description</b></h1></ion-label>
+      <ion-textarea [(ngModel)]="bookdescription" type="text">
+      </ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked"><h1 style="color:red"><b>Library Name</b></h1></ion-label>
+      <ion-input [(ngModel)]="libraryname" type="text">
+      </ion-input>
+    </ion-item>
+    <ion-button expand="block" (click)="createBook(bookname, bookid, libraryname, authors, publisher, imglink, language, bookdescription, '0', 'null', 'null','0','0','0')">
+      Create Book
+    </ion-button>
+  </div>
+  <div *ngFor="let item of (results | async); let i = index">
+
+    <div *ngIf=" i == m">
+      <!-- <div *ngIf=" l == '1'">
+       <ion-item>
+          <ion-label position="stacked">Book Name</ion-label>
+          <ion-input [(ngModel)]="bookname" type="text" placeholder = "{{item.volumeInfo.title}}">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Book Id</ion-label>
+          <ion-input [(ngModel)]="bookid" type="text" placeholder = "{{ searchTerm }}">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Book Authors</ion-label>
+          <ion-input [(ngModel)]="authors" type="text" value = "{{ item.volumeInfo.authors }}">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Book Publisher</ion-label>
+          <ion-input [(ngModel)]="publisher" type="text" value = "{{ item.volumeInfo.publisher }}">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Img link</ion-label>
+          <ion-input [(ngModel)]="imglink" type="text" value = "{{ item.volumeInfo.imageLinks.thumbnail }}">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">language</ion-label>
+          <ion-input [(ngModel)]="language" type="text" value = "{{ item.volumeInfo.language }}">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Book description</ion-label>
+          <ion-textarea [(ngModel)]="bookdescription" type="text" placeholder = "{{ item.volumeInfo.description }}" value = "{{ item.volumeInfo.description }}">
+          </ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Library Name</ion-label>
+          <ion-input [(ngModel)]="libraryname" type="text" value = 'MEC' placeholder="enter librarayname">
+          </ion-input>
+        </ion-item>
+        <ion-button expand="block" (click)="createBook(bookname, bookid, libraryname, authors, publisher, imglink, language, bookdescription)">
+          Create Book
+        </ion-button>
+      </div> -->
+      <div *ngIf=" l == '0'">
+
+        <ion-item>
+          <ion-thumbnail slot="start" align="center">
+            <ion-img [src]="item.volumeInfo?.imageLinks?.thumbnail"></ion-img>
+          </ion-thumbnail>
+           <ion-label position="stacked"><h1 style="color:red"><b>Book Name</b></h1></ion-label>
+           <ion-input [(ngModel)]="bookname" type="text">
+             {{item.volumeInfo?.title}}
+           </ion-input>
+         </ion-item>
+         <ion-item>
+           <ion-label position="stacked"><h1 style="color:red"><b>Book Id</b></h1></ion-label>
+           <ion-input [(ngModel)]="bookid" type="text">
+             {{ searchTerm }}
+           </ion-input>
+         </ion-item>
+         <ion-item>
+           <ion-label position="stacked"><h1 style="color:red"><b>Book Authors</b></h1></ion-label>
+           <ion-input [(ngModel)]="bookid" type="text" >
+             {{ item.volumeInfo?.authors }}
+           </ion-input>
+         </ion-item>
+         <ion-item>
+           <ion-label position="stacked"><h1 style="color:red"><b>Book Publisher</b></h1></ion-label>
+           <ion-input [(ngModel)]="bookid" type="text">
+             {{ item.volumeInfo?.publisher }}
+           </ion-input>
+         </ion-item>
+         <ion-item>
+           <ion-label position="stacked"><h1 style="color:red"><b>language</b></h1></ion-label>
+           <ion-input [(ngModel)]="bookid" type="text">
+             {{ item.volumeInfo?.language }}
+           </ion-input>
+         </ion-item>
+
+         <ion-item>
+           <ion-label position="stacked"><h1 style="color:red"><b>Description</b></h1></ion-label>
+           <ion-textarea [(ngModel)]="bookdescription" type="text" value="{{ item.volumeInfo?.description }}">
+             {{ item.volumeInfo?.description }}
+           </ion-textarea>
+         </ion-item>
+         <ion-item>
+           <ion-label position="stacked"><h1 style="color:red"><b>Library Name</b></h1></ion-label>
+           <ion-input [(ngModel)]="libraryname" type="text">
+             MEC
+           </ion-input>
+         </ion-item>
+         <ion-button expand="block" (click)="createBook(item.volumeInfo.title, searchTerm, 'MEC', item.volumeInfo?.authors, item.volumeInfo?.publisher, item.volumeInfo?.imageLinks?.thumbnail, item.volumeInfo?.language, item.volumeInfo?.description, '0', 'null', 'null','0','0','0')">
+           Create Book
+         </ion-button>
+        </div>
+
+
+
+    </div>
+
+
+  </div>
+
+</div>
+</ion-content>

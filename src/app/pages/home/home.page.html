@@ -1,0 +1,45 @@
+
+
+<ion-content align="center">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="bubbles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <section class="b1">
+    <div class="in1">
+      <div class="content">
+        <h1>
+  Libreo</h1><br>
+    <div *ngIf="iscs == '1'">
+      <div *ngIf="isLoggedIn$ | async" align="center">
+
+        <a class="btn" *ngIf="isAdmin == 'Client'" routerLink="/tabs/about" routerDirection="forward" routerDirection="forward">About</a>
+
+        <a class="btn" *ngIf="isAdmin == 'Client'" routerLink="/tabs/books" routerDirection="forward" routerDirection="forward">Books</a>
+
+
+       <a class="btn" *ngIf="isAdmin == 'Librarian'" routerLink="/tabs/books" routerDirection="forward">Books</a>
+
+       <a class="btn" *ngIf="isAdmin == 'Librarian'" routerLink="/tabs/book-create" routerDirection="forward">Add Books</a>
+
+    </div>
+    </div>
+    <div *ngIf="iscs == '0'"><h2 style="color:red">Account Activation Pending Pls Contact Your Librarian for Activation</h2></div>
+    <div *ngIf="iscs == '-1'"><h2 style="color:red">Account Activation Rejected by librarian Please Contact your Librarian for activation</h2></div>
+      </div>
+
+  </div>
+
+  </section>
+
+
+
+
+
+
+
+</ion-content>
