@@ -121,7 +121,8 @@ export class BooksService {
       borrowerlid: borrowerlid,
       avgrate: avgrate,
       totrate: totrate,
-      norate: norate
+      norate: norate,
+      added: firebase.firestore.FieldValue.serverTimestamp()
     };
 
     const docRef = await this.afs.collection('books').add(data);

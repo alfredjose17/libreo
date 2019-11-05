@@ -8,7 +8,6 @@ const routes: Routes = [
     loadChildren: './pages/login/login.module#LoginPageModule',
   },
 
-
 ];
 
 @NgModule({

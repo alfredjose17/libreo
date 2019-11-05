@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthServiceProvider } from '../../services/user/auth.service';
 import { BooksService } from '../../services/books/books.service';
 import { BorrowService } from '../../services/borrow/borrow.service';
+import * as firebase from 'firebase/app'
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/database';
@@ -14,6 +15,7 @@ import { ProfileService } from '../../services/user/profile.service';
 export class BorrowReqPage implements OnInit {
   userReqs$;
   userBooks$;
+  date = firebase.firestore.FieldValue.serverTimestamp();
   filteredusers = [];
   constructor(public auth: AuthServiceProvider, public bs: BooksService, public borrow: BorrowService, public userservice: ProfileService) {
     this.userservice.getallusers().then((res: any) => {

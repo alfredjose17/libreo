@@ -35,6 +35,7 @@
         <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Authors :</h2><p style="color:green">{{key.authors}}<p></div></div>
         <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Publisher :</h2><p style="color:green">{{key.publisher}}<p></div></div>
         <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Language :</h2><p style="color:green">{{key.language}}<p></div></div>
+        <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Last Borrowed Date :</h2><p style="color:green"> {{date}}<p></div></div>
 
         <div align="center" *ngIf="key.id == uid">
           <div *ngIf="key.borrow == '0';else other_content">

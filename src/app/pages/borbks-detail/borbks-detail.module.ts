@@ -3,14 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
+import { RatingComponent } from '../../rating/rating.component';
 import { IonicModule } from '@ionic/angular';
 
-import { BorrowedbooksPage } from './borrowedbooks.page';
+import { BorbksDetailPage } from './borbks-detail.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: BorrowedbooksPage
+    component: BorbksDetailPage
   }
 ];
 
@@ -21,6 +22,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [BorrowedbooksPage]
+  declarations: [BorbksDetailPage, RatingComponent]
 })
-export class BorrowedbooksPageModule {}
+export class BorbksDetailPageModule {}

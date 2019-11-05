@@ -24,6 +24,7 @@ export class SignupPage implements OnInit {newuser = {
     cs: '',
   }
   m = '0';
+  k = '0';
   public loading: any;
   constructor(
     public navCtrl: NavController,
@@ -76,5 +77,11 @@ export class SignupPage implements OnInit {newuser = {
   }
   goback(){
     this.navCtrl.navigateRoot('tabs/login');
+  }
+  term(){
+    this.navCtrl.navigateRoot('tabs/temsandconditions');
+  }
+  check(){
+    this.k = '1';
   }
 }

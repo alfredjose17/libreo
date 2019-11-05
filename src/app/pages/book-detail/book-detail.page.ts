@@ -24,7 +24,9 @@ enum COLORS {
   styleUrls: ['./book-detail.page.scss'],
 })
 export class BookDetailPage implements OnInit {
+
   uid = null;
+  date = null;
   isAdmin = null;
   n = null;
   m=0;
@@ -72,6 +74,8 @@ export class BookDetailPage implements OnInit {
        .then(userProfileSnapshot => {
          this.n= userProfileSnapshot.data().avgrate;
          this.norate= userProfileSnapshot.data().norate;
+         this.date = userProfileSnapshot.data().date;
+         this.dte();
          this.rating();
        });
    }
@@ -87,6 +91,9 @@ export class BookDetailPage implements OnInit {
       console.log('Async operation has ended');
       event.target.complete();
     }, 2000);
+  }
+  dte(){
+    this.date = this.date.toDate();
   }
   rating(){
      this.k = 1;

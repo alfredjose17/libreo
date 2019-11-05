@@ -46,6 +46,10 @@ const routes: Routes = [
       { path: 'signup',
        loadChildren: '../signup/signup.module#SignupPageModule'
      },
+
+     { path: 'temsandconditions',
+     loadChildren: '../temsandconditions/temsandconditions.module#TemsandconditionsPageModule' },
+
      { path: 'requests',
       loadChildren: '../requests/requests.module#RequestsPageModule',
       ...canActivate(redirectUnauthorizedToLanding)
@@ -78,8 +82,17 @@ const routes: Routes = [
      },
 
      { path: 'borrowedbooks',
-      loadChildren: '../borrowedbooks/borrowedbooks.module#BorrowedbooksPageModule',
-      ...canActivate(redirectUnauthorizedToLanding)
+       children:[
+         {
+         path: '',
+         loadChildren: '../borrowedbooks/borrowedbooks.module#BorrowedbooksPageModule',
+         ...canActivate(redirectUnauthorizedToLanding)
+          },
+         { path: ':id',
+           loadChildren: '../borbks-detail/borbks-detail.module#BorbksDetailPageModule',
+          ...canActivate(redirectUnauthorizedToLanding)
+         },
+       ]
      },
      { path: 'returnrequest',
       loadChildren: '../returnrequest/returnrequest.module#ReturnrequestPageModule',

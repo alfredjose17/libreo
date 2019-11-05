@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar color="dark">
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+      <ion-back-button defaultHref="/tabs/borrowedbooks"></ion-back-button>
     </ion-buttons>
-    <ion-title>Books Taken</ion-title>
+    <ion-title>Details</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,11 +26,21 @@
 
 
             <div *ngIf="user.libraryname == book.libraryname">
-                <div *ngIf="user.uid == book.borroweruid" align="center" routerLink="{{ book.id }}" redirection="forward">
+                <div *ngIf="user.uid == book.borroweruid" align="center">
+                  <div *ngIf="book.id == uid">
                   <ion-avatar>
                     <img [src]="book.imglink" alt="Loading...">
                   </ion-avatar>
                   <ion-label color="primary" text-warp><h2><b>{{ book.bookname }}</b></h2></ion-label>
+                  <ion-label color="primary" text-warp><h2><b>ISBN:{{ book.bookid }}</b></h2></ion-label>
+                  <ion-label color="danger" text-warp><h2><b>Return Date: {{ date }}</b></h2></ion-label>
+                  <ion-label color="danger" text-warp><h2><b>Return Date: {{ od }}</b></h2></ion-label>
+                  <div class="spacer" style="height: 5px;"></div>
+
+                  <ion-label color="primary" text-warp>How was the book:<app-rating [(rating)]="rating"></app-rating></ion-label>
+                  <ion-button *ngIf="rating == undefined" color="danger" (click)="rate()">Return</ion-button>
+                  <ion-button *ngIf="rating != undefined" color="success" (click)="ret.create(book.id,book.uid,'0',rating)">Return</ion-button>
+                  </div>
                 </div>
             </div>
 

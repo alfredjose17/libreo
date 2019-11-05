@@ -63,12 +63,13 @@ export class BorrowService {
                 this.req = firebase.firestore().doc(`/borrow/${uid}`);
                 return this.req.update({ status });
               }
-              bor(borrow: number, status: number, borroweruid: string, borrowerlid: string, uid:string, rid:string): Promise<any> {
+              bor(borrow: number, status: number, borroweruid: string, borrowerlid: string, uid:string, rid:string, date:string): Promise<any> {
                 this.bk = firebase.firestore().doc(`/books/${uid}`);
                 this.req = firebase.firestore().doc(`/borrow/${rid}`);
                 this.req.update({ status });
                 this.bk.update({ borrow });
                 this.bk.update({ borrowerlid });
+                this.bk.update({ date });
                 return this.bk.update({ borroweruid });
 
               }

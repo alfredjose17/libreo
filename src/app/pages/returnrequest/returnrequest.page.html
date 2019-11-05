@@ -17,7 +17,7 @@
           <div *ngIf="key.uid == user.uid">
             <div *ngIf="key.bid == book.id">
               <ion-item>
-                <h2>User: "{{ user.displayName }}" with id: "{{ user.libraryid }}" wishes to Retur  book: "{{ book.bookname }}" isbn: "{{ book.bookid }}" ... </h2>
+                <h2>User: "{{ user.displayName }}" with id: "{{ user.libraryid }}" wishes to Return book: "{{ book.bookname }}" isbn: "{{ book.bookid }}" ... </h2>
                 <div align="center" *ngIf="key.status == '0'">
                   <ion-button color="success" (click)="ret.bor('0', '1', 'null', 'null', key.bid, key.id, book.norate+1,book.totrate+key.rate)">Accept</ion-button><br><ion-button color="danger" (click)="borrow.updatestatus('-1', key.id)">Reject</ion-button>
                 </div>
@@ -25,7 +25,6 @@
                   <h3 style="color:green"><b>accepted</b></h3>
                   <ion-button color="danger" (click)="ret.delete(key.id)">Delete</ion-button>
                 </div>
-
               </ion-item>
             </div>
           </div>

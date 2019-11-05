@@ -13,8 +13,6 @@
 
           <ion-input type="text" placeholder="Library-Name" [(ngModel)]="newuser.libraryname" value="MEC"></ion-input>
 
-          <ion-input type="text" placeholder="Library-Id" [(ngModel)]="newuser.libraryid"></ion-input>
-
           <ion-select type="User-Type" placeholder="usertype" [(ngModel)]="newuser.usertype" value="Client">
             <ion-select-option value="Client">Client</ion-select-option>
             <ion-select-option value="Librarian">Librarian</ion-select-option>
@@ -23,13 +21,26 @@
           <ion-input *ngIf="newuser.usertype == 'Librarian'" type="text" placeholder="librarianid" [(ngModel)]="newuser.librarianid"></ion-input>
 
         <div align="center" *ngIf="newuser.usertype == 'Client'">
-          <ion-button block round outline color="success" (click)="joinUser()">Sign Up</ion-button>
-          <ion-button full clear color="warning" (click)="goback()">Go Back</ion-button>
+          <ion-input type="text" placeholder="Library-Id" [(ngModel)]="newuser.libraryid"></ion-input>
+          <div>
+            <ion-checkbox [(ngModel)]="checked" (click)="check()" color="success"></ion-checkbox>
+            <ion-label color="primary" (click)="term()"> Terms and Condition </ion-label>
+          </div>
+          <div *ngIf="checked == true"  >
+            <ion-button block round outline color="success" (click)="joinUser()">Sign Up</ion-button>
+            <ion-button full clear color="warning" (click)="goback()">Go Back</ion-button>
+          </div>
         </div>
         <div align="center" *ngIf="newuser.usertype == 'Librarian'">
-          <ion-button *ngIf="code == '#lib@libreo'"block round outline color="success" (click)="joinUser()">Sign Up</ion-button>
-          <h2 *ngIf="code != '#lib@libreo'" style="color:red">Code entered wrong</h2>
-          <ion-button full clear color="warning" (click)="goback()">Go Back</ion-button>
+          <div>
+            <ion-checkbox [(ngModel)]="checked1" (click)="check()" color="success"></ion-checkbox>
+            <ion-label color="primary" (click)="term()"> Terms and Condtion </ion-label>
+          </div>
+          <div *ngIf="checked1 == true">
+            <ion-button *ngIf="code == '#lib@libreo'"block round outline color="success" (click)="joinUser()">Sign Up</ion-button>
+            <h2 *ngIf="code != '#lib@libreo'" style="color:red">Code entered wrong</h2>
+            <ion-button full clear color="warning" (click)="goback()">Go Back</ion-button>
+          </div>
         </div>
         </div>
 

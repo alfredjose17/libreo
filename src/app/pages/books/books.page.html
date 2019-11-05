@@ -18,7 +18,7 @@
     <div *ngIf=" auth.user$ | async as user">
 
 
-      <h1 class="primary" align="center" style="color:white"><b>Library Name:</b> {{ user.libraryname }}</h1>
+      <h1 class="primary" align="left" style="color:white"><b>Library Name:</b> {{ user.libraryname }}</h1>
 
       <hr>
 
@@ -26,7 +26,8 @@
       <ul *ngFor="let book of userBooks$ | async">
 
 
-            <div *ngIf="user.libraryname == book.libraryname" routerLink="{{ book.id }}" redirection="forward" align="center">
+            <div *ngIf="user.libraryname == book.libraryname" routerLink="{{ book.id }}" redirection="forward" >
+
                 <ion-avatar>
                   <img [src]="book.imglink" alt="Loading...">
                 </ion-avatar>

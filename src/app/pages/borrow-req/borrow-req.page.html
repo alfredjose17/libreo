@@ -19,7 +19,7 @@
               <ion-item>
                 <h2>User: "{{ user.displayName }}" with id: "{{ user.libraryid }}" wishes to borrow book: "{{ book.bookname }}" isbn: "{{ book.bookid }}" ... </h2>
                 <div align="center" *ngIf="key.status == '0'">
-                  <ion-button color="success" (click)="borrow.bor('1', '1', user.uid, user.libraryid, key.bid, key.id)">Accept</ion-button><br><ion-button color="danger" (click)="borrow.updatestatus('-1', key.id)">Reject</ion-button>
+                  <ion-button color="success" (click)="borrow.bor('1', '1', user.uid, user.libraryid, key.bid, key.id, date)">Accept</ion-button><br><ion-button color="danger" (click)="borrow.updatestatus('-1', key.id)">Reject</ion-button>
                 </div>
                 <div align="center" *ngIf="key.status == '1'" style="background-color:palegreen;color:white;padding:20px;">
                   <h3 style="color:green"><b>accepted</b></h3>

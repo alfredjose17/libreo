@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthServiceProvider } from '../../services/user/auth.service';
 import { BooksService } from '../../services/books/books.service';
 import { ProfileService } from '../../services/user/profile.service';
-
 import { ReturnService } from '../../services/return/return.service';
 
 @Component({
@@ -13,7 +12,7 @@ import { ReturnService } from '../../services/return/return.service';
 export class BorrowedbooksPage implements OnInit {
   userBooks$;
   filteredusers = [];
-  constructor(public auth: AuthServiceProvider, public bs: BooksService, public userservice: ProfileService, public ret: ReturnService,) {
+  constructor(public auth: AuthServiceProvider, public bs: BooksService,public userservice: ProfileService, public ret: ReturnService,) {
     this.userservice.getallusers().then((res: any) => {
         this.filteredusers = res;
      })
@@ -24,7 +23,7 @@ export class BorrowedbooksPage implements OnInit {
   }
   doRefresh(event) {
     console.log('Begin async operation');
-
+    this.ngOnInit()
     setTimeout(() => {
       console.log('Async operation has ended');
       event.target.complete();
