@@ -4,7 +4,7 @@
   height: 100%;
   z-index: 999;
   display: flex;
-  background: url("home.jpg") no-repeat 70% 70%;
+  background: url("../signup/home.jpg") no-repeat 70% 70%;
   top: 0;
   display: table;
   background-size: cover;
@@ -21,7 +21,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  background: #191919;
+  background: rgb(43, 42, 42, 0.5);
   text-align: center;
   border-radius: 24px;
   border: 2px solid #adc1ed;

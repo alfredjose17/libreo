@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   background-repeat: no-repeat;
-  background: url("home.jpg") no-repeat 50% 50%;
+  background: url("../signup/home.jpg") no-repeat 50% 50%;
   background-position: center;
 }
 .box{
@@ -19,7 +19,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%,-50%);
-  background: #191919;
+  background: rgb(14, 79, 143, 0.4);
   text-align: center;
   border-radius: 24px;
   border: 2px solid #adc1ed;

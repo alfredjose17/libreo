@@ -20,8 +20,8 @@
         <div *ngIf="key.id == uid" align="center" class="img">
           <img src="{{ key.imglink }}" alt="Loading..."/>
         </div>
-        <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Name :</h2><p style="color:green">{{key.bookname}}<p></div></div>
-          <div *ngIf="key.id == uid"><h2 style="color:blue">UserRating( {{norate}} ) :</h2><div>
+        <div *ngIf="key.id == uid">    <div>  <h2 style="color:white">Name :</h2><p style="color:yellow">{{key.bookname}}<p></div></div>
+          <div *ngIf="key.id == uid"><h2 style="color:white">UserRating( {{norate}} ) :</h2><div>
             <ion-button color="dark" (click)="rating()"><div *ngIf="k == '0'">Rating</div><div *ngIf="k != '0'"><ion-icon name="star" *ngFor="let num of array"
                [ngStyle]="{'color':getColor(num)}">
             </ion-icon>
@@ -30,12 +30,12 @@
             </ion-icon></div></ion-button>
 
           </div></div>
-        <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">ISBN :</h2><p style="color:green">{{key.bookid}}<p></div></div>
-        <div *ngIf="key.id == uid">    <div *ngIf="key?.bookdescription">    <h2 style="color:blue">description :</h2><p style="color:green">{{key.bookdescription}}<p></div></div>
-        <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Authors :</h2><p style="color:green">{{key.authors}}<p></div></div>
-        <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Publisher :</h2><p style="color:green">{{key.publisher}}<p></div></div>
-        <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Language :</h2><p style="color:green">{{key.language}}<p></div></div>
-        <div *ngIf="key.id == uid">    <div>  <h2 style="color:blue">Last Borrowed Date :</h2><p style="color:green"> {{date}}<p></div></div>
+        <div *ngIf="key.id == uid">    <div>  <h2 style="color:white">ISBN :</h2><p style="color:yellow">{{key.bookid}}<p></div></div>
+        <div *ngIf="key.id == uid">    <div *ngIf="key?.bookdescription">    <h2 style="color:yellow">description :</h2><p style="color:yellow">{{key.bookdescription}}<p></div></div>
+        <div *ngIf="key.id == uid">    <div>  <h2 style="color:white">Authors :</h2><p style="color:yellow">{{key.authors}}<p></div></div>
+        <div *ngIf="key.id == uid">    <div>  <h2 style="color:white">Publisher :</h2><p style="color:yellow">{{key.publisher}}<p></div></div>
+        <div *ngIf="key.id == uid">    <div>  <h2 style="color:white">Language :</h2><p style="color:yellow">{{key.language}}<p></div></div>
+        <div *ngIf="key.id == uid">    <div>  <h2 style="color:white">Last Borrowed Date :</h2><p style="color:yellow"> {{date}}<p></div></div>
 
         <div align="center" *ngIf="key.id == uid">
           <div *ngIf="key.borrow == '0';else other_content">
