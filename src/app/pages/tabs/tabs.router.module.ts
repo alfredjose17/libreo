@@ -30,6 +30,9 @@ const routes: Routes = [
          },
        ]
      },
+     { path: 'maps',
+      loadChildren: '../maps/maps.module#MapsPageModule'
+     },
       {
        path: 'books',
        children: [

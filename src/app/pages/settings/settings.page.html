@@ -1,6 +1,10 @@
+
 <ion-header>
   <ion-toolbar color="dark">
-    <ion-title>settings</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
   </ion-toolbar>
 </ion-header>
 <ng-container
@@ -10,9 +14,9 @@
 <ion-content>
   <div class="background" align="center">
   <div class="box">
-        <h1 align="center" style="color: #02a2ba">
+        <!-- <h1 align="center" style="color: #02a2ba">
           Settings
-          </h1>
+          </h1> -->
           <ion-button routerLink="/tabs/about" color="primary" expand="block">
             <ion-icon name="information-circle"></ion-icon>About</ion-button>
           <ion-button expand="block" *ngIf="isLoggedIn$ | async" (click)="logOut()" color="danger"><ion-icon name="power"></ion-icon>LogOut</ion-button>

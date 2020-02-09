@@ -20,7 +20,7 @@
       <ul *ngFor="let key of filteredusers">
 
 
-            <div *ngIf="user.libraryname == key.libraryname" routerLink="{{ key.uid }}" redirection="forward" align="left">
+            <div class="box" *ngIf="user.libraryname == key.libraryname" routerLink="{{ key.uid }}" redirection="forward" align="left">
 
                 <ion-label color="primary" text-warp><h2 style="color:white"><b>Name: {{ key.displayName }}</b></h2></ion-label>
                 <ion-label color="primary" text-warp><h2 style="color:white"><b>Lib-Id: {{ key.libraryid }}</b></h2></ion-label>

@@ -1,5 +1,9 @@
+
 <ion-header>
   <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Requests</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -7,9 +11,9 @@
 <ion-content>
   <div class="background" align="center">
   <div class="box">
-        <h1 align="center" style="color: #02a2ba">
+        <!-- <h1 align="center" style="color: #02a2ba">
           Requests
-          </h1>
+          </h1> -->
           <ion-button routerLink="/tabs/borrow-req" color="success" expand="block">
             <ion-icon name="list-box"></ion-icon>Borrow-Requests
           </ion-button>
